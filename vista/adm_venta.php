@@ -11,7 +11,7 @@ if ($_SESSION['us_tipo']==3 || $_SESSION['us_tipo']==1) {
 
 <div class="modal fade" id="vista_venta" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
-        <div class="modal-content">
+        <div class="modal-content" style="width: 130%; right:100px">
             <div class="card card-success">
                 <div class="card-header">
                     <h3 class="card-title">Detalle Venta</h3>
