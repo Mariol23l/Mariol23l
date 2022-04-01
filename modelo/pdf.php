@@ -8,6 +8,174 @@ function getHtml($id_venta){
     $venta->buscar_id($id_venta);
     $venta_producto->buscar_detVenta($id_venta);
     $plantilla='
+    <html>
+    <head>
+    <style>
+
+.clearfix:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  a {
+    color: #0c7ef0;
+    text-decoration: underline;
+  }
+
+  /*encabezado morado*/
+  table thead tr {
+    height: 100px;
+    background: rgb(0, 110, 255);
+  }
+  body {
+    position: relative;
+    width: 21cm;  
+    height: 29.7cm; 
+    margin: 0 auto; 
+    color: #0d0058;
+    background: #FFFFFF; 
+    font-family: Arial, sans-serif; 
+    font-size: 12px; 
+    font-family: Arial;
+  }
+  
+  header {
+    padding: 10px 0;
+    margin-bottom: 30px;
+  }
+#logo {
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    margin-left:30px ;
+    margin-right: 40px;
+   
+  }
+  
+  #logo img {
+    width:100px;
+    height: 100px;
+  
+  }
+
+  h1 {
+   border-top: 1px solid rgb(15, 0, 80);
+  border-bottom: 1px solid rgb(15, 0, 80);
+  color: rgb(15, 0, 80);
+  font-size: 2.4em;
+  line-height: 1.4em;
+  font-weight: bold;
+  text-align: center;
+  margin: 0 0 20px 0;
+  background: url(../img/fondo.jpg);
+}
+
+  #project {
+    position:relative;
+    padding: 0px 0px 0px -8% !important;
+  margin-top:150px;
+    float: left;
+   display: inline;
+    color: rgb(0, 0, 0);
+  }
+  
+  #project span {
+    color: rgb(5, 0, 80);
+    margin-right: 10px;
+    width: 200px;
+    font-size: 16px;
+  }
+  
+  #company {
+    float: right;
+    text-align: right;
+  }
+  
+  #project div{
+    font-size: 16px;    
+  }
+
+  #company div {
+    white-space: nowrap;    
+  }
+
+  #negocio {
+    font-size: 18px;
+    color: rgb(1, 0, 80);
+  }
+    table {
+      position:relative;
+    padding: 0px 0px 0px -12% !important;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+  }
+    table tr:nth-child(2n-1) td {
+    background: rgb(227, 220, 230);
+  }
+   table th,
+  table td {
+    text-align: center;
+  }
+  
+  table th {
+ padding: 0px 15px 0px 15px !important;
+    font-size:16px;
+    color: rgb(255, 255, 255);
+    border-bottom: 1px solid #C1CED9;
+    white-space: nowrap;        
+    font-weight: normal;
+  }
+
+    table .service {
+
+    font-weight: bold;
+    text-align: center;
+  }
+
+  table td.service{
+    vertical-align: top;
+  }
+
+  table td.servic{
+
+    font-size:13px;
+      text-align: center;
+    vertical-align: top;
+  }
+
+
+    table td.total {
+    color : rgb(1, 0, 80);
+  }
+#res{
+ padding: 0px 0px 0px 40rem !important;
+}
+  table td.grand {
+    font-size:14px;
+    border-top: 1px solid  rgb(17, 0, 80);
+    
+  }
+  
+  #notices .notice {
+    color: rgb(115, 117, 93);
+    font-size: 1.2em;
+  }
+    footer {
+    color: #5D6975;
+    width: 100%;
+    height: 30px;
+    position: absolute;
+    bottom: 0;
+    border-top: 1px solid #C1CED9;
+    padding: 8px 0;
+    text-align: center;
+  }
+
+    </style>
+    </head>
     <body>
     <header class="clearfix">
       <div id="logo">
@@ -23,14 +191,14 @@ function getHtml($id_venta){
       foreach ($venta->objetos as $objeto) {
 
         $plantilla.='
-    
         <div id="project">
-          <div><b><span>Codigo de Venta: </span>'.$objeto->id_venta.'</b></div>
-          <div><b><span>Forma de Pago: </span>'.$objeto->formapago.'</b></div>
-          <div><b><span>Razon Social: </span>'.$objeto->razsocial.'</b></div>
-          <div><b><span>Ruc:</span>'.$objeto->ruc.'</b></div>
-          <div><b><span>Fecha y Hora: </span>'.$objeto->fecha.'</b></div>
-          <div><b><span>Vendedor:</span>'.$objeto->vendedor.'</b></div>
+          <div><b><span>ID de Venta: </span>'.$objeto->id_venta.'</b></div>
+          <div><b><span>Fecha Inicio: </span>'.$objeto->fecha.'</b></div>
+          <div><b><span>Fecha Final : </span>'.$objeto->fecha.'</b></div>
+          <div><b><span>Plazo Pago : </span>'.$objeto->formapago.'</b></div>
+          <div><b><span>Razn. Social: </span>'.$objeto->razsocial.'</b></div>
+          <div><b><span>RUC Clinica: </span>'.$objeto->ruc.'</b></div>
+          <div><b><span>Rte. - Venta: </span>'.$objeto->vendedor.'</b></div>
         </div>';
         }
         $plantilla.='
@@ -74,15 +242,15 @@ function getHtml($id_venta){
                 
                 $plantilla.='
                 <tr>
-                  <td colspan="8" class="grand total">SUBTOTAL</td>
+                  <td colspan="8" class="grand total" id="res">SUBTOTAL</td>
                   <td class="grand total">S/.'.$sub.'</td>
                 </tr>
                 <tr>
-                  <td colspan="8" class="grand total">IGV(18%)</td>
+                  <td colspan="8" class="grand total"  id="res">IGV(18%)</td>
                   <td class="grand total">S/.'.$igv.'</td>
                 </tr>
                 <tr>
-                  <td colspan="8" class="grand total">TOTAL</td>
+                  <td colspan="8" class="grand total"  id="res">TOTAL</td>
                   <td class="grand total">S/.'.$objeto->total.'</td>
                 </tr>';
       
@@ -101,7 +269,8 @@ function getHtml($id_venta){
           <footer>
             Created by Merlyn
           </footer>
-        </body>';
+        </body>
+        </html>';
           
           return $plantilla;
 }
