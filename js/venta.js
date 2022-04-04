@@ -3,12 +3,16 @@ $(document).ready(function () {
 
   function mostrar_Consulta() {
     let funcion = "mostrar_consulta";
+
     $.post("../controlador/VentaController.php", { funcion }, (response) => {
       const vistas = JSON.parse(response);
+      $("#producto_mas_vendido").html(vistas.producto_mas_vendido);
+      $("#Venta_Diaria").html(vistas.venta_diaria);
+      $("#Venta_Mensual").html(vistas.venta_mensual);
+      $("#Venta_Anual").html(vistas.venta_anual);
     });
   }
-
-  let funcion = "listar";
+  funcion = "listar";
   let datatable = $("#tabla_venta").DataTable({
     ajax: {
       url: "../controlador/VentaController.php",

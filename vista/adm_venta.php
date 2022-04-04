@@ -102,13 +102,12 @@ if ($_SESSION['us_tipo']==3 || $_SESSION['us_tipo']==1) {
                             <div class="small-box bg-info">
                                 <div class="inner">
                                     <h3 id="producto_mas_vendido"></h3>
-
                                     <p>Producto mas Vendido</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-pills"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i
+                                <a href="adm_mas_consultas.php" class="small-box-footer">Mas Consultas<i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -117,14 +116,13 @@ if ($_SESSION['us_tipo']==3 || $_SESSION['us_tipo']==1) {
                             <!-- small box -->
                             <div class="small-box bg-success">
                                 <div class="inner">
-                                    <h3 id="Venta Diaria"></h3>
-
+                                    <h3 id="Venta_Diaria"></h3>
                                     <p>Venta Diaria</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-truck-medical"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i
+                                <a href="adm_mas_consultas.php" class="small-box-footer">Mas Consultas <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -133,14 +131,13 @@ if ($_SESSION['us_tipo']==3 || $_SESSION['us_tipo']==1) {
                             <!-- small box -->
                             <div class="small-box bg-warning">
                                 <div class="inner">
-                                    <h3 id="Venta Mensual"></h3>
-
+                                    <h3 id="Venta_Mensual"></h3>
                                     <p>Venta Mensual</p>
                                 </div>
                                 <div class="icon">
-                                    <i class="fas fa-calendar-alt"></i>
+                                    <i class="fas fa-truck-medical"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i
+                                <a href="adm_mas_consultas.php" class="small-box-footer">Mas Consultas <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
@@ -149,14 +146,13 @@ if ($_SESSION['us_tipo']==3 || $_SESSION['us_tipo']==1) {
                             <!-- small box -->
                             <div class="small-box bg-danger">
                                 <div class="inner">
-                                    <h3 id="Venta _Anual"></h3>
-
+                                    <h3 id="Venta_Anual"></h3>
                                     <p>Venta_Anual</p>
                                 </div>
                                 <div class="icon">
                                     <i class="fas fa-signal"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">More info <i
+                                <a href="adm_mas_consultas.php" class="small-box-footer">Mas Consultas <i
                                         class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>

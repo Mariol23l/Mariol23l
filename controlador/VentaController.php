@@ -1,6 +1,8 @@
 <?php
 include '../modelo/venta.php';
 $venta  = new venta();
+session_start();
+
 
 if ($_POST['funcion']=='listar') {
     $venta->buscar();
@@ -14,13 +16,31 @@ if ($_POST['funcion']=='listar') {
 
 if ($_POST['funcion']=='mostrar_consulta') {
     $venta->producto_mas_vendido();
+     foreach ($venta -> objetos as $objeto) {
+      $producto_mas_vendido=$objeto->producto;
+    }
+    $venta->venta_diaria();
+    foreach ($venta -> objetos as $objeto) {
+      $venta_diaria=$objeto->venta_diaria;
+    }
+    $venta->venta_mensual();
+    foreach ($venta -> objetos as $objeto) {
+      $venta_mensual=$objeto->venta_mensual;
+    }
+    $venta->venta_anual();
     $json=array();
     foreach ($venta -> objetos as $objeto) {
-        $json['data'][]=$objeto;
+        $json[]=array(
+            'producto_mas_vendido'=>$producto_mas_vendido,
+            'venta_diaria'=>$venta_diaria,
+            'venta_mensual'=>$venta_mensual,
+            'venta_anual'=>$objeto->venta_anual
+        );
     }
-    $jsonstring=json_encode($json);
+    $jsonstring=json_encode($json[0]);
     echo $jsonstring;
 }
+
 
 if ($_POST['funcion']=='buscar_venta') {
     $venta->buscar_venta();
@@ -64,6 +84,46 @@ if ($_POST['funcion']=='buscar_venta') {
 if ($_POST['funcion']=='borrar') {
     $id=$_POST['id'];
     $lote->borrar($id);
-    
+}
+
+
+if ($_POST['funcion']=='venta_mes') {
+    $venta->venta_mes();
+    $json=array();
+    foreach ($venta -> objetos as $objeto) {
+        $json[]=$objeto;
+    }
+    $jsonstring=json_encode($json);
+    echo $jsonstring;
+}
+
+if ($_POST['funcion']=='comprador_mes') {
+    $venta->comprador_mes();
+    $json=array();
+    foreach ($venta -> objetos as $objeto) {
+        $json[]=$objeto;
+    }
+    $jsonstring=json_encode($json);
+    echo $jsonstring;
+}
+
+if ($_POST['funcion']=='ventas_anual') {
+    $venta->ventas_anual();
+    $json=array();
+    foreach ($venta -> objetos as $objeto) {
+        $json[]=$objeto;
+    }
+    $jsonstring=json_encode($json);
+    echo $jsonstring;
+}
+
+if ($_POST['funcion']=='producto_masvendido') {
+    $venta->producto_masvendido();
+    $json=array();
+    foreach ($venta -> objetos as $objeto) {
+        $json[]=$objeto;
+    }
+    $jsonstring=json_encode($json);
+    echo $jsonstring;
 }
 ?>

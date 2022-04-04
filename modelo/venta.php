@@ -55,12 +55,35 @@ class venta{
     }
 
     function producto_mas_vendido(){
-        $sql = "SELECT id_ventaproducto, SUM(cantidad) as cantidad, producto.nombre as nombre
-        FROM venta_producto
-        join lote on lote_id_lote=id_lote
-        join producto on lote_id_prod=id_producto
-        GROUP by id_producto
-        ORDER BY SUM(venta_producto.cantidad) DESC LIMIT 1;";
+
+
+        $sql = "SELECT SUM(cantidad)as total,CONCAT( producto.nombre,' ',concentracion) as producto FROM `venta`
+        JOIN venta_producto ON id_venta=venta_id_venta 
+        JOIN lote ON id_lote=lote_id_lote
+        JOIN producto ON id_producto=lote_id_prod
+        WHERE year(fecha)=year(curdate()) and month(fecha)=month(curdate())
+        GROUP BY lote_id_lote ORDER BY total DESC LIMIT 1";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
+    function venta_diaria(){
+        $sql = "SELECT  ROUND(SUM(total),2) as venta_diaria FROM venta WHERE DATE(fecha)=DATE(curdate())";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
+     function venta_mensual(){
+        $sql = "SELECT  ROUND(SUM(total),2) as venta_mensual FROM venta WHERE year(fecha)=year(curdate()) and month(fecha)=month(curdate())";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
+     function venta_anual(){
+        $sql = "SELECT  ROUND(SUM(total),2) as venta_anual FROM venta WHERE year(fecha)=year(curdate())";
         $query = $this->acceso->prepare($sql);
         $query->execute();
         $this->objetos = $query->fetchall();
@@ -93,6 +116,43 @@ class venta{
             $this->objetos = $query->fetchall();
             return $this->objetos;
         }
+    }
+
+    function venta_mes(){
+        $sql = "SELECT ROUND(SUM(total),2) as cantidad ,month(fecha) as mes from venta where year(fecha)=year(curdate()) GROUP by month(fecha)";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
+
+    function comprador_mes(){
+        $sql = "SELECT razsocial,ROUND(SUM(total),2) as cantidad ,month(fecha) as mes from venta where year(fecha)=year(curdate()) GROUP BY month(fecha),ruc ORDER BY cantidad DESC LIMIT 3";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
+
+    function ventas_anual(){
+        $sql = "SELECT ROUND(SUM(total),2) as cantidad ,month(fecha) as mes from venta where year(fecha)=year(date_add(curdate(),INTERVAL -1 YEAR)) GROUP by month(fecha)";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
+    }
+
+       function producto_masvendido(){
+        $sql = "SELECT  SUM(cantidad)as total, producto.nombre as nombre, concentracion FROM `venta`
+        JOIN venta_producto ON id_venta=venta_id_venta 
+        JOIN lote ON id_lote=lote_id_lote
+        JOIN producto ON id_producto=lote_id_prod
+        WHERE year(fecha)=year(curdate()) and month(fecha)=month(curdate())
+        GROUP BY lote_id_lote ORDER BY total DESC LIMIT 5";
+        $query = $this->acceso->prepare($sql);
+        $query->execute();
+        $this->objetos = $query->fetchall();
+        return $this->objetos;
     }
 }
 ?>
