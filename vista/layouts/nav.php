@@ -208,6 +208,14 @@
                                 </p>
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a href="google_maps.php" class="nav-link">
+                              <i class="fa-solid fa-earth-americas"></i>
+                                <p>
+                                    Mapa Peru Clinicas
+                                </p>
+                            </a>
+                        </li>
                         <!--                 
                         <li class="nav-header">CALENDARIO</li>
                         <li class="nav-item">
