@@ -2,7 +2,7 @@
 class Conexion
 {
      private $servidor = "localhost";
-     private $db = "dimerlyn_bfmerlyn";
+     private $db = "farmacia";
      private $puerto = 3306;
      private $charset = "utf8";
      private $usuario = "root";

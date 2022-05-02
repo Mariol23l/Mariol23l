@@ -42,7 +42,7 @@ class producto{
             join laboratorio on prod_lab=id_laboratorio
             join tipo_producto on prod_tip_prod=id_tip_prod
             join presentacion on prod_present=id_presentacion 
-            and producto.nombre LIKE :consulta limit 25";
+            and producto.nombre LIKE :consulta";
             $query = $this->acceso->prepare($sql);
             $query->execute(array(':consulta' => "%$consulta%"));
             $this->objetos = $query->fetchall();
@@ -51,7 +51,7 @@ class producto{
             $sql = "SELECT id_producto,producto.nombre as nombre,concentracion,adicional,precio,laboratorio.nombre as laboratorio, tipo_producto.nombre as tipo, presentacion.nombre as presentacion, producto.avatar as avatar, prod_lab, prod_tip_prod, prod_present FROM producto
             join laboratorio on prod_lab=id_laboratorio
             join tipo_producto on prod_tip_prod=id_tip_prod
-            join presentacion on prod_present=id_presentacion and producto.nombre NOT LIKE '' order by producto.nombre asc limit 25";
+            join presentacion on prod_present=id_presentacion and producto.nombre NOT LIKE '' order by producto.nombre asc LIMIT 15";
             $query = $this->acceso->prepare($sql);
             $query->execute();
             $this->objetos = $query->fetchall();

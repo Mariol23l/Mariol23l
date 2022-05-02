@@ -75,8 +75,8 @@
         </nav>
         <!-- /.navbar -->
         <style>
-        .sidebar {
-            padding: px px;
+        .sidebartop {
+             position: fixed !important;
             transition: all 0.5s ease;
             height: 100%;
             background: #0F2027;
@@ -87,7 +87,7 @@
 
         </style>
         <!-- Main Sidebar Container -->
-        <aside class="sidebar main-sidebar sidebar-dark-primary elevation-4">
+        <aside class="sidebartop main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="../vista/adm_catalogo.php" class="brand-link" style="text-align: center;">
                 <!--<img id="" src="../img/logo.png" style="object-fit: cover; width: 30%; height: 40%;" class="brand-image img-circle elevation-3">     -->
@@ -210,7 +210,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="google_maps.php" class="nav-link">
-                              <i class="fa-solid fa-earth-americas"></i>
+                              <i class="nav-icon fas fa-solid fa-earth-americas"></i>
                                 <p>
                                     Mapa Peru Clinicas
                                 </p>

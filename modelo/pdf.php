@@ -1,5 +1,5 @@
 <?php
-include_once 'Venta.php';
+include_once 'venta.php';
 include_once 'VentaProducto.php';
 
 function getHtml($id_venta){

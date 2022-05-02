@@ -45,7 +45,7 @@ class lote{
             join laboratorio on prod_lab=id_laboratorio
             join tipo_producto on prod_tip_prod=id_tip_prod
             join presentacion on prod_present=id_presentacion
-            and producto.nombre NOT LIKE '' order by producto.nombre";
+            and producto.nombre NOT LIKE '' order by producto.nombre ASC";
             $query = $this->acceso->prepare($sql);
             $query->execute();
             $this->objetos = $query->fetchall();

@@ -2,9 +2,11 @@
 <?php
 require_once("../libreria/dompdf/autoload.inc.php");
 require_once('../modelo/pdf.php');
+
 $id_venta=$_POST['id'];
+
 use Dompdf\Dompdf;
-$dompdf = new DOMPDF();
+$dompdf = new Dompdf();
 
 
 

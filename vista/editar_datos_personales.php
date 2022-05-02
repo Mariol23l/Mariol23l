@@ -7,6 +7,7 @@ if ($_SESSION['us_tipo'] == 2 || $_SESSION['us_tipo']==3 || $_SESSION['us_tipo']
 <?php
     include_once 'layouts/nav.php';
     ?>
+Copy
 <!-- Button trigger modal -->
 <!-- Button trigger modal -->
 

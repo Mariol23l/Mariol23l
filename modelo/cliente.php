@@ -30,7 +30,7 @@ class cliente{
             $this->objetos = $query->fetchall();
             return $this->objetos;
         } else {
-            $sql = "SELECT * FROM cliente where razsocial NOT LIKE '' ORDER BY id_cliente DESC, razsocial ASC";
+            $sql = "SELECT * FROM cliente where razsocial NOT LIKE '' ORDER BY id_cliente DESC, razsocial ASC limit 25 ";
             $query = $this->acceso->prepare($sql);
             $query->execute();
             $this->objetos = $query->fetchall();

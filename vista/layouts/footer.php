@@ -38,8 +38,6 @@
           
         }else if (response==2) {
             $('#gestion_lote').hide();
-            $('#gestion_producto').hide();
-            $('#gestion_proveedor').hide();
             $('#gestion_venta').hide();
             $('#gestion_cotizaciones').hide();
             $('#gestion_usuario').hide();

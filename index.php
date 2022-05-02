@@ -11,7 +11,6 @@
 </head>
 <?php
 session_start();
-
 if (!empty($_SESSION['us_tipo'])) {
     header('Location:controlador/LoginController.php');
 } else {
@@ -25,6 +24,7 @@ if (!empty($_SESSION['us_tipo'])) {
                 <img src="img/medicina.svg" alt="logo">
             </div>
             <div class="contenido-login" >
+            
                 <form action="controlador/LoginController.php" method="post">
                     <img src="img/doctor.png" alt="doctor">
                     <h2>Bienvenido</h2>
@@ -54,11 +54,12 @@ if (!empty($_SESSION['us_tipo'])) {
         </div>
         </div>
         <script src="js/particles.js"></script>
+ 
         <script src="js/app.js"></script>
+
     </body>
     <script src="js/login.js"></script>
 </html>
-
 <?php
 }
 ?>

@@ -1,13 +1,13 @@
 <?php
 session_start();
-if ($_SESSION['us_tipo'] == 1  || $_SESSION['us_tipo']==3) {
+if ($_SESSION['us_tipo'] == 1  || $_SESSION['us_tipo']==3 || $_SESSION['us_tipo']==2) {
     include_once 'layouts/header.php';
 ?>
 <title>Editar Datos</title>
 <?php
     include_once 'layouts/nav.php';
     ?>
-
+Copy
 <!-- Button trigger modal -->
 <div class="modal fade" id="cambiologo" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
